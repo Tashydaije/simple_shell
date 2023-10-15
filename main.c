@@ -19,7 +19,20 @@ int main( __attribute__((unused)) int argc, char **argv, char **env)
 		prompt();
 		input = readline();
 		args = _strtok(input, " ");
-		execute_cmd(args, env);
+
+		if (args != NULL)
+		{
+			if (strcmp(args[0], "exit") == 0)
+			{
+				exitShell(args);
+			}
+
+			else
+			{
+				execute_cmd(args, env);
+				free_args2(args);
+			}
+		}
 	}
 
 	return (EXIT_SUCCESS);

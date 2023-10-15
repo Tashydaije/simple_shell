@@ -34,5 +34,7 @@ char *get_location(char *name);
 char *searchfile(dir_l *head, char *name);
 int isProgPath(char *path);
 int execute_cmd(char **args, char **env);
+void exitShell(char **arg);
+void free_args2(char **arg);
 
 #endif
