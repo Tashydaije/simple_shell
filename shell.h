@@ -36,5 +36,6 @@ int isProgPath(char *path);
 int execute_cmd(char **args, char **env);
 void exitShell(char **arg);
 void free_args2(char **arg);
+char *print_env(void);
 
 #endif
