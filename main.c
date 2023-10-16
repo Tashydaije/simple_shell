@@ -9,7 +9,7 @@
  * Return: 0 if successful, non-zero if not.
  */
 
-int main( __attribute__((unused)) int argc, char **argv, char **env)
+int main(__attribute__((unused)) int argc, char **argv, char **env)
 {
 	char *input;
 	char **args = NULL;
@@ -27,6 +27,16 @@ int main( __attribute__((unused)) int argc, char **argv, char **env)
 				exitShell(args);
 			}
 
+			else if (strcmp(args[0], "env") == 0)
+			{
+				char *env_string = print_env();
+
+				if (env_string != NULL)
+				{
+					printf("%s", env_string);
+					free(env_string);
+				}
+			}
 			else
 			{
 				execute_cmd(args, env);
