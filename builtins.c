@@ -70,7 +70,7 @@ int change_directory(char *dir)
 
 	oldpwd = getcwd(NULL, 0);
 	chdir_ret = chdir(dir);
-	if (chidir_ret == -1)
+	if (chdir_ret == -1)
 	{
 		write(STDERR_FILENO, "cd: ", 4);
 		write(STDERR_FILENO, dir, strlen(dir));
