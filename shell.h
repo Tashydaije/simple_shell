@@ -24,6 +24,8 @@ typedef struct dir_list
 } dir_l;
 
 void prompt(void);
+void set_last_exit_status(int status);
+int get_last_exit_status(void);
 char *readline(void);
 char **_strtok(char *str, int *num_args);
 char *_getenv(const char *name);
