@@ -39,5 +39,10 @@ void free_args2(char **arg);
 char *print_env(void);
 void update_cmd(char **args, int index, char *arg);
 void process_command(char *command, char **env);
+size_t _strlen(const char *str);
+char *_memcpy(char *dest, char *src, unsigned int n);
+int _strcmp(char *s1, char *s2);
+char *_strcat(char *dest, char *src);
+char *_strdup(char *src);
 
 #endif
