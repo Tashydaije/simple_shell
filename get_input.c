@@ -20,24 +20,17 @@ void prompt(void)
 
 char *readline(void)
 {
-	ssize_t read;
+	ssize_t read = -1;
 	char *command = NULL;
 	size_t cmd_len = 0;
 
 	read = getline(&command, &cmd_len, stdin);
 
-	if (read == -1)
+	if (read == EOF)
 	{
-		if (read == EOF)
-		{
-			free(command);
-			return (NULL);
-		}
-		perror("getline");
 		free(command);
 		return (NULL);
 	}
-
 	if (command[read - 1] == '\n')
 		command[read - 1] = '\0';
 
