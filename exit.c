@@ -4,11 +4,10 @@
 #define EXIT_COMMAND 1
 
 /**
- * exitShell - Handle the "exit" command, optionally specifying an exit code
- * @arg: Array of words entered in shell, including "exit" and exit code if any
+ * exitShell - exit built in command that exits the shell
+ * @arg: Array of words of the entered shell
  *
- * Description: This function parses the exit code (if provided) and perfoms
- * the "exit" logic. also deallocates memory associated with the argument array
+ * Return: nothing
  */
 
 void exitShell(char **arg)
@@ -29,9 +28,10 @@ void exitShell(char **arg)
 			if (exit_code <= -1)
 				exit_code = 2;
 		}
+
 		free_args2(arg);
 		write(STDOUT_FILENO, exitMessage, sizeof(exitMessage) - 1);
-		exit(1);
+		exit(get_last_exit_status());
 	}
 }
 

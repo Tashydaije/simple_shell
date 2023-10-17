@@ -1,11 +1,12 @@
 #include "shell.h"
 
 static int last_exit_status;
+
 /**
  * set_last_exit_status - Function to set the last exit status
  * @status: status
  *
- * Return: ...
+ * Return: ....
  */
 
 void set_last_exit_status(int status)
@@ -75,6 +76,7 @@ void process_command(char *command,char **argv, char **env)
 int main(__attribute__((unused)) int argc, char **argv, char **env)
 {
 	char *input;
+	last_exit_status = 0;
 
 	while (1 && argv[0])
 	{
