@@ -35,7 +35,7 @@ dir_l *get_path_dir(dir_l **head, char *path)
 
 int isProgPath(char *path)
 {
-	if (access(path, X_OK) == 0)
+	if (path && (access(path, X_OK) == 0))
 		return (1);
 	return (0);
 }
@@ -55,6 +55,8 @@ char *searchfile(dir_l *head, char *name)
 	int file_len = 0, dir_len = 0;
 	int name_len = _strlen(name);
 
+	if (head == NULL || name == NULL)
+		return (NULL);
 	while (head != NULL)
 	{
 		dir_len = _strlen(head->dir);
