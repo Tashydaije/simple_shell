@@ -24,35 +24,6 @@ int _strncmp(const char *s1, char *s2, size_t n)
 }
 
 /**
- * _strchr - locate charachter in a string
- * @s: source string
- * @c: character to find
- *
- * Return: the string from character found
- */
-
-char *_strchr(char *s, char c)
-{
-	int a = 0, b;
-
-	while (s[a])
-	{
-		a++;
-	}
-
-	for (b = 0; b <= a; b++)
-	{
-		if (c == s[b])
-		{
-			s += b;
-			return (s);
-		}
-	}
-
-	return ('\0');
-}
-
-/**
  * _strncpy - a function that copies from src to dest
  * @src: source file
  * @dest: destination of the file
