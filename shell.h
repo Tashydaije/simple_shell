@@ -39,6 +39,7 @@ char *get_location(char *command, char **tokens, char *argv[]);
 char *searchfile(dir_l *head, char *name);
 int isProgPath(char *path);
 int execute_cmd(char **args, char **env);
+int execute_extern_cmd(char **args, char **env);
 int execute_builtin(char *command, char **args,
 char *env_path, char **argv);
 void exitShell(char **arg);

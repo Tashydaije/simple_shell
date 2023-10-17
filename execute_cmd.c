@@ -8,7 +8,7 @@
  * Return: 1.
  */
 
-int execute_cmd(char **args, char **env)
+int execute_extern_cmd(char **args, char **env)
 {
 	pid_t child_pid;
 	int status;
@@ -67,5 +67,20 @@ char **args, char *path, char **argv)
 		return (1);
 	}
 
+	return (0);
+}
+
+/**
+ * execute_cmd - execute command
+ * @args: null-terminate array of strings containing command and its arguments
+ * @env: a pointer to an array of strings of environment variables
+ *
+ * Return: 1 success, O otherwise
+ */
+
+int execute_cmd(char **args, char **env)
+{
+	if (execute_extern_cmd(args, env))
+		return (1);
 	return (0);
 }
