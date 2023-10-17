@@ -26,7 +26,7 @@ int get_last_exit_status(void)
 }
 
 /**
- * process_cmd - handles processing of commands
+ * process_command - handles processing of commands
  * @command: command from user
  * @argv: NULL terminated list of the prog arguments
  * @env: NULL terminated list of the process' environment variables
