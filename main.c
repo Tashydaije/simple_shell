@@ -33,7 +33,7 @@ void process_command(char *command,char **argv, char **env)
 	update_cmd(args, 0, progPath);
 	execute_cmd(args, env);
 
-	if (strcmp(args[0], "exit") == 0)
+	if (_strcmp(args[0], "exit") == 0)
 	{
 		exitShell(args);
 	}

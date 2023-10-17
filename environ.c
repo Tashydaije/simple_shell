@@ -13,13 +13,13 @@ char *_getenv(const char *name)
 	int len;
 	char *path = NULL;
 
-	len = strlen(name);
+	len = _strlen(name);
 
 	for (i = 0; environ[i]; i++)
 	{
-		if (strncmp(name, environ[i], len) == 0)
+		if (_strncmp(name, environ[i], len) == 0)
 		{
-			path = strdup(environ[i] + len + 1);
+			path = _strdup(environ[i] + len + 1);
 			return (path);
 		}
 		i++;

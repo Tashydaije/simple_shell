@@ -14,7 +14,7 @@ void exitShell(char **arg)
 
 	if (arg[1])
 	{
-		exit_code = atoi(arg[1]);
+		exit_code = _atoi(arg[1]);
 		if (exit_code < 0)
 		{
 			exit_code = 2;
