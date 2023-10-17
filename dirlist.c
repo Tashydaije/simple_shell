@@ -17,11 +17,11 @@ dir_l *add_node(dir_l **head, char *dir)
 		fprintf(stderr, "Cannot create an empty node\n");
 		return (NULL);
 	}
-	node = malloc(sizeof(dir_l));
+	new_node = malloc(sizeof(dir_l));
 	if (new_node == NULL)
 	{
 		perror("malloc");
-		return (NULL):
+		return (NULL);
 	}
 	new_node->dir = _strdup(dir);
 	if (*head == NULL)
