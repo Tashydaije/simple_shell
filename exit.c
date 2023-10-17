@@ -1,5 +1,8 @@
 #include "shell.h"
 
+#define CONTINUE_COMMAND 0
+#define EXIT_COMMAND 1
+
 /**
  * exitShell - exit built in command that exits the shell
  * @arg: Array of words of the entered shell
@@ -13,10 +16,17 @@ void exitShell(char **arg)
 	int i = 1;
 	int exit_code = 0;
 	char exitMessage[] = "exit\n\n[Disconnected...]\n";
+<<<<<<< HEAD
 
 	read(STDIN_FILENO, command, sizeof(command));
 	command[_strcspn(command, "\n")] = '\0';
 
+=======
+
+	read(STDIN_FILENO, command, sizeof(command));
+	command[_strcspn(command, "\n")] = '\0';
+
+>>>>>>> exit with status code
 	if (_strcmp(command, "exit") == 0)
 	{
 		if (arg[i])
@@ -25,7 +35,10 @@ void exitShell(char **arg)
 			if (exit_code <= -1)
 				exit_code = 2;
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> exit with status code
 		free_args2(arg);
 		write(STDOUT_FILENO, exitMessage, sizeof(exitMessage) - 1);
 		exit(get_last_exit_status());
