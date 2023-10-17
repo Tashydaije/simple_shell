@@ -30,6 +30,7 @@ int execute_cmd(char **args, char **env)
 	else
 	{
 		waitpid(child_pid, &status, 0);
+		set_last_exit_status(status);
 	}
 
 	return (1);
