@@ -60,8 +60,10 @@ void process_command(char *command,char **argv, char **env)
 
 	if (_strcmp(args[0], "exit") == 0)
 	{
+		cleanup(command, args, progPath);
 		exitShell(args);
 	}
+	cleanup(command, args, progPath);
 }
 
 /**
@@ -75,9 +77,8 @@ void process_command(char *command,char **argv, char **env)
 
 int main(__attribute__((unused)) int argc, char **argv, char **env)
 {
-	char *input;
-
 	last_exit_status = 0;
+	char *input;
 
 	while (1 && argv[0])
 	{
