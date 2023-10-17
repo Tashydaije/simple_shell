@@ -74,7 +74,7 @@ int _strcmp(char *s1, char *s2)
  * @dest: The destination string.
  * @src: the source string
  *
- * REturn: A pointer to the destination string
+ * Return: A pointer to the destination string
  */
 
 char *_strcat(char *dest, char *src)
