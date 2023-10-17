@@ -30,12 +30,14 @@ char *_getenv(const char *name);
 dir_l *add_node(dir_l **head, char *dir);
 void free_list(dir_l *head);
 dir_l *get_path_dir(char *path);
-char *get_location(char *name);
+char *get_location(char **tokens);
 char *searchfile(dir_l *head, char *name);
 int isProgPath(char *path);
 int execute_cmd(char **args, char **env);
 void exitShell(char **arg);
 void free_args2(char **arg);
 char *print_env(void);
+void update_cmd(char **args, int index, char *arg);
+void process_command(char *command, char **env);
 
 #endif

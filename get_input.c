@@ -47,3 +47,20 @@ char *readline(void)
 	return (command);
 
 }
+
+/**
+ * update_cmd - Updates a command argument
+ * @args: Pointer to the argument array
+ * @index: index of the token command
+ * @arg: value to update argument
+ *
+ * Return: void
+ */
+
+void update_cmd(char **args, int index, char *arg)
+{
+	if (!args || !(*args) || !arg || index < 0)
+		return;
+	free(args[index]);
+	args[index] = strdup(arg);
+}

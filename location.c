@@ -93,32 +93,32 @@ char *searchfile(dir_l *head, char *name)
 
 /**
  * get_location - looks for a program in the process env
- * @name: name of the program
+ * @tokens: name of the program (1st token)
  *
- * pointer to updated program name(token)
+ * Return: pointer to updated program name(token)
  */
 
-char *get_location(char *name)
+char *get_location(char **tokens)
 {
 	char *path = _getenv("PATH");
 	char *prog_path = NULL;
 	dir_l *head = NULL;
 
-	if (!name || !path)
+	if (!tokens || !path)
 		return (NULL);
 
-	if (isProgPath(name))
+	if (isProgPath(tokens[0]))
 	{
 		free(path);
-		return (strdup(name));
+		return (strdup(tokens[0]));
 	}
 
 	head = get_path_dir(path);
-	prog_path = searchfile(head, name);
+	prog_path = searchfile(head, tokens[0]);
 
 	if (prog_path == NULL)
 	{
-		fprintf(stderr, "bash: %s: %s\n", name, strerror(errno));
+		fprintf(stderr, "bash: %s: %s\n", tokens[0], strerror(errno));
 		free_list(head);
 		free(path);
 		return (NULL);
