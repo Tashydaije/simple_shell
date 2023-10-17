@@ -46,7 +46,7 @@ void exitShell(char **arg);
 void free_args2(char **arg);
 char *print_env(void);
 void update_cmd(char **args, int index, char *arg);
-void process_command(char *command,char **argv, char **env);
+void process_command(char *command, char **argv, char **env);
 void free_tokens(char **tokens);
 void handle_exit(char **args, char **argv);
 void handle_env(void);

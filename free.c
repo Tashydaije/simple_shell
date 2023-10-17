@@ -51,7 +51,7 @@ void free_args(char ***args)
  * arguments, and prog path.
  * @command: commands to be freed
  * @progPath: path to free
- * args: ...
+ * @args: ...
  *
  * Return: nothing
  */
