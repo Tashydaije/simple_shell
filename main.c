@@ -67,17 +67,15 @@ void process_command(char *command,char **argv, char **env)
 }
 
 /**
- * main - runs a simple UNIX command line interpreter
- * @argc: Number of arguments passed to the program
- * @argv: An array of pointers to the arguments.
+ * shell_lp - handles the main loop in the entry point
+ * @argv: NULL terminated list of the application arguments
  * @env: NULL terminated list of the process' environment variables
  *
- * Return: 0 if successful, non-zero if not.
+ * Return: void
  */
 
-int main(UN_ATTR int argc, char **argv, char **env)
+void shell_lp(char *argv[], char **env)
 {
-	last_exit_status = 0;
 	char *input;
 
 	while (1 && argv[0])
@@ -94,7 +92,21 @@ int main(UN_ATTR int argc, char **argv, char **env)
 		}
 		process_command(input, argv, env);
 	}
+}
+
+/**
+ * main - Entry of shell application
+ * @argc: Number of arguments passed to the program
+ * @argv: NULL terminated list of the application arguments
+ * @env: NULL terminated list of the process' environment variables
+ *
+ * Return: 0 if successful, non-zero if error
+ */
+
+int main(UN_ATTR int argc, char **argv, char **env)
+{
+	last_exit_status = 0;
+	shell_lp(argv, env);
 
 	return (EXIT_SUCCESS);
-
 }
