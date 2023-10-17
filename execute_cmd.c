@@ -66,6 +66,12 @@ char **args, char *path, char **argv)
 		handle_env();
 		return (1);
 	}
+	if (_strcmp(cmd, "cd") == 0)
+	{
+		free(path);
+		handle_cd(args);
+		return(1);
+	}
 
 	return (0);
 }
