@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * execute_cmd - executes the command
+ * execute_extern_cmd - executes the command
  * @args: null-terminate array of strings containing cmd and its args
  * @env: a pointer to an array of strings of env variables
  *
@@ -40,7 +40,7 @@ int execute_extern_cmd(char **args, char **env)
  * execute_builtin - searches if the given command is built-in
  * @command: command given by user
  * @args: null-terminate array of strings containing command and its arguments
- * @env_path: pointer to the path of the environment
+ * @path: pointer to the path of the environment
  * @argv: NULL terminated list of the shell's arguments
  *
  * Return: 1 success, 0 otherwise
