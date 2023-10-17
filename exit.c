@@ -1,29 +1,35 @@
 #include "shell.h"
 
 /**
- * exitShell - Handle the "exit" command, optionally specifying an exit code
- * @arg: Array of words entered in shell, including "exit" and exit code if any
+ * exitShell - exit built in command that exits the shell
+ * @arg: Array of words of the entered shell
  *
- * Description: This function parses the exit code (if provided) and perfoms
- * the "exit" logic. also deallocates memory associated with the argument array
+ * Return: nothing
  */
 
 void exitShell(char **arg)
 {
+	char command[100];
+	int i = 1;
 	int exit_code = 0;
+	char exitMessage[] = "exit\n\n[Disconnected...]\n";
 
-	if (arg[1])
+	read(STDIN_FILENO, command, sizeof(command));
+	command[_strcspn(command, "\n")] = '\0';
+
+	if (_strcmp(command, "exit") == 0)
 	{
-		exit_code = _atoi(arg[1]);
-		if (exit_code < 0)
+		if (arg[i])
 		{
-			exit_code = 2;
+			exit_code = _atoi(arg[i]);
+			if (exit_code <= -1)
+				exit_code = 2;
 		}
-	}
 
-	free_args2(arg);
-	printf("[Disconnected...]\n");
-	exit(exit_code);
+		free_args2(arg);
+		write(STDOUT_FILENO, exitMessage, sizeof(exitMessage) - 1);
+		exit(get_last_exit_status());
+	}
 }
 
 /**

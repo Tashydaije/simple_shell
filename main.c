@@ -1,5 +1,31 @@
 #include "shell.h"
 
+static int last_exit_status;
+
+/**
+ * set_last_exit_status - Function to set the last exit status
+ * @status: status
+ *
+ * Return: ....
+ */
+
+void set_last_exit_status(int status)
+{
+	last_exit_status = WIFEXITED(status) ? WEXITSTATUS(status) : 1;
+}
+
+/**
+ * get_last_exit_status - Function to get the last exit status
+ *
+ * Return: last exit status
+ */
+
+int get_last_exit_status(void)
+{
+	return (last_exit_status);
+}
+
+
 /**
  * process_cmd - handles processing of commands
  * @command: command from user
@@ -51,6 +77,7 @@ void process_command(char *command,char **argv, char **env)
 int main(__attribute__((unused)) int argc, char **argv, char **env)
 {
 	char *input;
+	last_exit_status = 0;
 
 	while (1 && argv[0])
 	{
