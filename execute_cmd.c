@@ -33,7 +33,7 @@ int execute_cmd(char **args, char **env)
 		set_last_exit_status(status);
 	}
 
-	return (1);
+	return (-1);
 }
 
 /**

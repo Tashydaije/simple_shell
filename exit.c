@@ -1,5 +1,8 @@
 #include "shell.h"
 
+#define CONTINUE_COMMAND 0
+#define EXIT_COMMAND 1
+
 /**
  * exitShell - exit built in command that exits the shell
  * @arg: Array of words of the entered shell

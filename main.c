@@ -25,7 +25,6 @@ int get_last_exit_status(void)
 	return (last_exit_status);
 }
 
-
 /**
  * process_cmd - handles processing of commands
  * @command: command from user
