@@ -76,6 +76,7 @@ void process_command(char *command,char **argv, char **env)
 int main(__attribute__((unused)) int argc, char **argv, char **env)
 {
 	char *input;
+
 	last_exit_status = 0;
 
 	while (1 && argv[0])
