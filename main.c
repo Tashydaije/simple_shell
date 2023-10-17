@@ -9,11 +9,11 @@
  * Return: void
  */
 
-void process_command(char *command, char **env)
+void process_command(char *command,char **argv, char **env)
 {
+	int num_args = 0;
 	char **args = NULL;
 	char *progPath = NULL;
-	char *env_string = print_env();
 
 	if (!command || command[0] == '\0')
 	{
@@ -21,33 +21,21 @@ void process_command(char *command, char **env)
 		return;
 	}
 
-	args = _strtok(command, " ");
-	if (args != NULL)
-	{
-		if (strcmp(args[0], "exit") == 0)
-		{
-			exitShell(args);
-		}
-		else if (strcmp(args[0], "env") == 0)
-		{
-			if (env_string != NULL)
-			{
-				printf("%s", env_string);
-				free(env_string);
-			}
-		}
-		else
-		{
-			progPath = get_location(args);
+	args = _strtok(command, &num_args);
+	progPath = get_location(command, args, argv);
 
-			if (progPath == NULL)
-			{
-				free_args2(args);
-				return;
-			}
-			update_cmd(args, 0, progPath);
-			execute_cmd(args, env);
-		}
+	if (progPath == NULL)
+	{
+		free(command);
+		free_tokens(args);
+		return;
+	}
+	update_cmd(args, 0, progPath);
+	execute_cmd(args, env);
+
+	if (strcmp(args[0], "exit") == 0)
+	{
+		exitShell(args);
 	}
 }
 
@@ -75,7 +63,7 @@ int main(__attribute__((unused)) int argc, char **argv, char **env)
 				write(STDOUT_FILENO, "\n", 1);
 			break;
 		}
-		process_command(input, env);
+		process_command(input, argv, env);
 	}
 
 	return (EXIT_SUCCESS);
