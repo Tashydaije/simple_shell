@@ -44,6 +44,17 @@ void process_command(char *command,char **argv, char **env);
 void free_tokens(char **tokens);
 void handle_exit(char **args, char **argv);
 void handle_env(void);
+size_t _strlen(const char *str);
+char *_memcpy(char *dest, char *src, unsigned int n);
+int _strcmp(char *s1, char *s2);
+char *_strcat(char *dest, char *src);
+char *_strdup(char *src);
+int _strncmp(const char *s1, char *s2, size_t n);
+char *_strchr(char *s, char c);
+char *_strncpy(char *dest, char *src, int n);
+char *_strcpy(char *dest, const char *src);
+size_t _strcspn(const char *str, const char *reject);
+int _atoi(const char *str);
 
 
 
