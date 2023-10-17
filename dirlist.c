@@ -10,30 +10,28 @@
 
 dir_l *add_node(dir_l **head, char *dir)
 {
-	dir_l *new_node =  malloc(sizeof(dir_l));
-	dir_l *last;
+	dir_l *new_node = NULL;
 
 	if (dir == NULL)
 	{
 		fprintf(stderr, "Cannot create an empty node\n");
 		return (NULL);
 	}
-
-	if (!new_node)
-		return (NULL);
-
-	new_node->dir = dir;
-	new_node->next = NULL;
-
-	if (*head)
+	node = malloc(sizeof(dir_l));
+	if (new_node == NULL)
 	{
-		last = *head;
-		while (last->next != NULL)
-			last = last->next;
-		last->next = new_node;
+		perror("malloc");
+		return (NULL):
+	}
+	new_node->dir = _strdup(dir);
+	if (*head == NULL)
+	{
+		new_node->next = NULL;
+		*head = new_node;
 	}
 	else
 	{
+		new_node->next = *head;
 		*head = new_node;
 	}
 	return (new_node);
