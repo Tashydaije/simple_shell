@@ -8,6 +8,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <errno.h>
+#include <dirent.h>
+
+#define UN_ATTR __attribute__((unused))
 
 extern char **environ;
 
@@ -56,7 +59,7 @@ char *_strcpy(char *dest, const char *src);
 size_t _strcspn(const char *str, const char *reject);
 int _atoi(const char *str);
 void showError(char *program, char *command);
-
+void cleanup(char *command, char **args, char *progPath);
 
 
 #endif
