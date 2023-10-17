@@ -34,3 +34,37 @@ int execute_cmd(char **args, char **env)
 
 	return (1);
 }
+
+/**
+ * execute_builtin - searches if the given command is built-in
+ * @command: command given by user
+ * @args: null-terminate array of strings containing command and its arguments
+ * @env_path: pointer to the path of the environment
+ * @argv: NULL terminated list of the shell's arguments
+ *
+ * Return: 1 success, 0 otherwise
+ */
+
+int execute_builtin(char *command,
+char **args, char *path, char **argv)
+{
+	char *cmd = args[0];
+
+	if (cmd == NULL)
+		return (0);
+	if (strcmp(cmd, "exit") == 0)
+	{
+		free(path);
+		free(command);
+		handle_exit(args, argv);
+		return (1);
+	}
+	if (strcmp(cmd, "env") == 0)
+	{
+		free(path);
+		handle_env();
+		return (1);
+	}
+
+	return (0);
+}
