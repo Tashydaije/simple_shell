@@ -64,6 +64,10 @@ int _atoi(const char *str);
 void showError(char *program, char *command);
 void cleanup(char *command, char **args, char *progPath);
 void handle_sigint(int sig);
-
+void handle_exit(char **args, char **argv);
+void handle_env(void);
+int change_directory(char *dir);
+int handle_cd_minus(void);
+int handle_cd(char **args);
 
 #endif
