@@ -87,6 +87,8 @@ char *searchfile(dir_l *head, char *name)
 /**
  * get_location - looks for a program in the process env
  * @tokens: name of the program (1st token)
+ * @command: User command input
+ * @argv: NULL termited list of shell's arguments
  *
  * Return: pointer to updated program name(token)
  */
@@ -114,7 +116,7 @@ char *get_location(char *command, char **tokens, char *argv[])
 
 	if (prog_path == NULL)
 	{
-		fprintf(stderr, "bash: %s: %s\n", tokens[0], strerror(errno));
+		showError(argv[0], tokens[0]);
 		free_list(&head);
 		free(path);
 		return (NULL);

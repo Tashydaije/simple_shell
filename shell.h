@@ -55,6 +55,7 @@ char *_strncpy(char *dest, char *src, int n);
 char *_strcpy(char *dest, const char *src);
 size_t _strcspn(const char *str, const char *reject);
 int _atoi(const char *str);
+void showError(char *program, char *command);
 
 
 
