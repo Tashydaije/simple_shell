@@ -19,7 +19,7 @@ void showError(char *program, char *command)
 	command_len = _strlen(command);
 	_strncpy(error_message, program, program_len);
 	_memcpy(error_message + program_len, ": 1: ",  5);
-	_memcpy(error_message + program_len + 5, commad, command_len);
+	_memcpy(error_message + program_len + 5, command, command_len);
 	_memcpy(error_message + program_len + 5 + command_len,
 	": not found\n", 13);
 	write(STDERR_FILENO, error_message, _strlen(error_message));
