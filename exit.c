@@ -31,7 +31,7 @@ void exitShell(char **arg)
 		}
 		free_args2(arg);
 		write(STDOUT_FILENO, exitMessage, sizeof(exitMessage) - 1);
-		exit(get_last_exit_status());
+		exit(1);
 	}
 }
 
