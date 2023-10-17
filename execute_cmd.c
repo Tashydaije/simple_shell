@@ -52,14 +52,14 @@ char **args, char *path, char **argv)
 
 	if (cmd == NULL)
 		return (0);
-	if (strcmp(cmd, "exit") == 0)
+	if (_strcmp(cmd, "exit") == 0)
 	{
 		free(path);
 		free(command);
 		handle_exit(args, argv);
 		return (1);
 	}
-	if (strcmp(cmd, "env") == 0)
+	if (_strcmp(cmd, "env") == 0)
 	{
 		free(path);
 		handle_env();

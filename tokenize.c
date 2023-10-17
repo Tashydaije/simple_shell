@@ -31,12 +31,12 @@ char **_strtok(char *str, int *num_args)
 			perror("token limit is 100");
 			exit(EXIT_FAILURE);
 		}
-		if (token[0] == '"' && token[strlen(token) - 1] == '"')
+		if (token[0] == '"' && token[_strlen(token) - 1] == '"')
 		{
-			token[strlen(token) - 1] = '\0';
+			token[_strlen(token) - 1] = '\0';
 			token++;
 		}
-		tokens[i] = strdup(token);
+		tokens[i] = _strdup(token);
 
 		if (!tokens[i])
 		{

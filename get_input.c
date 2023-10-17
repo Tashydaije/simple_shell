@@ -62,5 +62,5 @@ void update_cmd(char **args, int index, char *arg)
 	if (!args || !(*args) || !arg || index < 0)
 		return;
 	free(args[index]);
-	args[index] = strdup(arg);
+	args[index] = _strdup(arg);
 }

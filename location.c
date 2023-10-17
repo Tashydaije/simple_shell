@@ -53,11 +53,11 @@ char *searchfile(dir_l *head, char *name)
 {
 	char *file = NULL;
 	int file_len = 0, dir_len = 0;
-	int name_len = strlen(name);
+	int name_len = _strlen(name);
 
 	while (head != NULL)
 	{
-		dir_len = strlen(head->dir);
+		dir_len = _strlen(head->dir);
 		file_len = dir_len + name_len + 2;
 		file = malloc(sizeof(*file) * file_len);
 
@@ -67,9 +67,9 @@ char *searchfile(dir_l *head, char *name)
 			exit(EXIT_FAILURE);
 		}
 
-		memcpy(file, head->dir, dir_len);
-		memcpy(file + dir_len, "/", 1);
-		memcpy(file + dir_len + 1, name, name_len);
+		_memcpy(file, head->dir, dir_len);
+		_memcpy(file + dir_len, "/", 1);
+		_memcpy(file + dir_len + 1, name, name_len);
 		file[file_len - 1] = '\0';
 
 		if (isProgPath(file))
@@ -106,7 +106,7 @@ char *get_location(char *command, char **tokens, char *argv[])
 	if (isProgPath(tokens[0]))
 	{
 		free(path);
-		return (strdup(tokens[0]));
+		return (_strdup(tokens[0]));
 	}
 
 	get_path_dir(&head, path);
