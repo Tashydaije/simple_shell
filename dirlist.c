@@ -46,15 +46,24 @@ dir_l *add_node(dir_l **head, char *dir)
  * Return: void
  */
 
-void free_list(dir_l *head)
+void free_list(dir_l **head)
 {
-	dir_l *next;
+	dir_l *curr_ptr = NULL;
+	dir_l *next_ptr = NULL;
 
-	while (head)
+	if (!head || !(*head))
+		return;
+
+	curr_ptr = *head;
+	next_ptr = (*head)->next;
+	while (next_ptr != NULL)
 	{
-		next = head->next;
-		free(head->dir);
-		free(head);
-		head = next;
+		free(curr_ptr->dir);
+		free(curr_ptr);
+		curr_ptr = next_ptr;
+		next_ptr = next_ptr->next;
 	}
+	free(curr_ptr->dir);
+	free(curr_ptr);
+	*head = NULL;
 }

@@ -48,3 +48,4 @@ void free_args2(char **arg)
 	free(arg);
 	*arg = NULL;
 }
+

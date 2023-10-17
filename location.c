@@ -3,34 +3,27 @@
 /**
  * get_path_dir - tokenizes a list of directories into dir_l
  *                liinked list.
+ * @head: Pointer to the head node of a dir_l linked list
  * @path: A colon-separated list of directories
  *
  * Return: pointer to initialized linked list
  */
 
-dir_l *get_path_dir(char *path)
+dir_l *get_path_dir(dir_l **head, char *path)
 {
-	char **dirs;
-	int i;
-	dir_l *head = NULL;
+	char *token = strtok(path, ":");
 
-	dirs = _strtok(path, ":");
-
-	if (!dirs)
-		return (NULL);
-
-	for (i = 0; dirs[i]; i++)
+	if (*head != NULL)
 	{
-		if (add_node(&head, dirs[i]) == NULL)
-		{
-			free_list(head);
-			free(dirs);
-			return (NULL);
-		}
+		fprintf(stderr, "List is not empty...");
+		return (NULL);
 	}
-	free(dirs);
-
-	return (head);
+	while (token != NULL)
+	{
+		add_node(head, token);
+		token = strtok(NULL, ":");
+	}
+	return (*head);
 }
 
 /**
@@ -98,7 +91,7 @@ char *searchfile(dir_l *head, char *name)
  * Return: pointer to updated program name(token)
  */
 
-char *get_location(char **tokens)
+char *get_location(char *command, char **tokens, char *argv[])
 {
 	char *path = _getenv("PATH");
 	char *prog_path = NULL;
@@ -107,23 +100,26 @@ char *get_location(char **tokens)
 	if (!tokens || !path)
 		return (NULL);
 
+	if (execute_builtin(command, tokens, path, argv))
+		return (NULL);
+
 	if (isProgPath(tokens[0]))
 	{
 		free(path);
 		return (strdup(tokens[0]));
 	}
 
-	head = get_path_dir(path);
+	get_path_dir(&head, path);
 	prog_path = searchfile(head, tokens[0]);
 
 	if (prog_path == NULL)
 	{
 		fprintf(stderr, "bash: %s: %s\n", tokens[0], strerror(errno));
-		free_list(head);
+		free_list(&head);
 		free(path);
 		return (NULL);
 	}
-	free_list(head);
+	free_list(&head);
 	free(path);
 	return (prog_path);
 }

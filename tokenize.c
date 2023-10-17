@@ -43,7 +43,7 @@ char **_strtok(char *str, int *num_args)
 			while (i > 0)
 				free(tokens[--i]);
 			free(tokens);
-			return (NULL):
+			return (NULL);
 		}
 		i++;
 		token = strtok(NULL, DELIMS);
