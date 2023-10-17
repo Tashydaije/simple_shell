@@ -60,6 +60,7 @@ size_t _strcspn(const char *str, const char *reject);
 int _atoi(const char *str);
 void showError(char *program, char *command);
 void cleanup(char *command, char **args, char *progPath);
+void handle_sigint(int sig);
 
 
 #endif

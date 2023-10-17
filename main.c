@@ -75,13 +75,14 @@ void process_command(char *command,char **argv, char **env)
  * Return: 0 if successful, non-zero if not.
  */
 
-int main(__attribute__((unused)) int argc, char **argv, char **env)
+int main(UN_ATTR int argc, char **argv, char **env)
 {
 	last_exit_status = 0;
 	char *input;
 
 	while (1 && argv[0])
 	{
+		signal(SIGINT, handle_sigint);
 		prompt();
 		input = readline();
 
