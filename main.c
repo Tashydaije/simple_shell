@@ -34,7 +34,7 @@ int get_last_exit_status(void)
  * Return: void
  */
 
-void process_command(char *command,char **argv, char **env)
+void process_command(char *command, char **argv, char **env)
 {
 	int num_args = 0;
 	char **args = NULL;
