@@ -70,7 +70,7 @@ char **args, char *path, char **argv)
 	{
 		free(path);
 		handle_cd(args);
-		return(1);
+		return (1);
 	}
 
 	return (0);

@@ -15,7 +15,9 @@ void prompt(void)
 /**
 * readline - reads input(command) from user
 *
-* return: command
+* Description: The function reads a line of input from the (stdin).
+*
+* Return: command variable, which contains the line of input
 */
 
 char *readline(void)
