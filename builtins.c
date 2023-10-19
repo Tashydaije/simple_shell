@@ -31,7 +31,7 @@ void handle_exit(char **args, char **argv)
 	}
 	else
 	{
-		exit_code = 2;
+		exit_code = 0;
 	}
 	free_tokens(args);
 	exit(exit_code);
