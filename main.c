@@ -103,13 +103,30 @@ void shell_lp(char *argv[], char **env)
  * Return: 0 if successful, non-zero if error
  */
 
-int main(UN_ATTR int argc, char **argv, char **env)
+int main(int argc, char **argv, char **env)
 {
 	char *input;
+	const char *filename = argv[1];
 
 	last_exit_status = 0;
 
-	if (!isatty(STDIN_FILENO))
+	if (argc == 2)
+	{
+		FILE *file = fopen(filename, "r");
+
+		if (file == NULL)
+		{
+			perror("File open error");
+			return (127);
+		}
+		input = readline();
+
+		if (input != NULL)
+			process_command(input, argv, env);
+
+		fclose(file);
+	}
+	else if (!isatty(STDIN_FILENO))
 	{
 		input = readline();
 
