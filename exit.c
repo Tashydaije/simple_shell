@@ -20,9 +20,6 @@ void exitShell(char **arg)
 	read(STDIN_FILENO, command, sizeof(command));
 	command[_strcspn(command, "\n")] = '\0';
 
-	read(STDIN_FILENO, command, sizeof(command));
-	command[_strcspn(command, "\n")] = '\0';
-
 	if (_strcmp(command, "exit") == 0)
 	{
 		if (arg[i])
@@ -33,7 +30,7 @@ void exitShell(char **arg)
 		}
 		free_args2(arg);
 		write(STDOUT_FILENO, exitMessage, sizeof(exitMessage) - 1);
-		exit(1);
+		exit(exit_code);
 	}
 }
 
@@ -47,16 +44,18 @@ void exitShell(char **arg)
 
 void free_args2(char **arg)
 {
-	int i;
+	int i = 0;
 
 	if (arg == NULL)
 		return;
 
-	i = 0;
 	while (arg[i] != NULL)
-		free(arg[i++]);
+	{
+		free(arg[i]);
+		arg[i] = NULL;
+		i++;
+	}
 
 	free(arg);
-	*arg = NULL;
 }
 
