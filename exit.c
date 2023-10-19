@@ -28,9 +28,12 @@ void exitShell(char **arg)
 			if (exit_code <= -1)
 				exit_code = 2;
 		}
+		else
+			exit(0);
+
 		free_args2(arg);
 		write(STDOUT_FILENO, exitMessage, sizeof(exitMessage) - 1);
-		exit(exit_code);
+		exit(get_last_exit_status());
 	}
 }
 
