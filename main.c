@@ -113,9 +113,8 @@ int main(UN_ATTR int argc, char **argv, char **env)
 	{
 		input = readline();
 
-		if (input == NULL)
-			return (0);
-		process_command(input, argv, env);
+		if (input != NULL)
+			process_command(input, argv, env);
 	}
 	else
 	{
