@@ -105,21 +105,9 @@ void shell_lp(char *argv[], char **env)
 
 int main(UN_ATTR int argc, char **argv, char **env)
 {
-	char *input;
-
 	last_exit_status = 0;
 
-	if (!isatty(STDIN_FILENO))
-	{
-		input = readline();
-
-		if (input && _strcmp(input, "exit") != 0)
-		{
-			process_command(input, argv, env);
-		}
-	}
-	else
-		shell_lp(argv, env);
+	shell_lp(argv, env);
 
 	return (EXIT_SUCCESS);
 }
